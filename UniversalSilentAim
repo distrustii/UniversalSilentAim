@@ -10,7 +10,7 @@ end
 local SilentAimSettings = {
     Enabled = false,
     
-    ClassName = "Universal Silent Aim - Ur Mom",
+    ClassName = "Universal Silent Aim - Averiias, Stefanuk12, xaxa",
     ToggleKey = "RightAlt",
     
     TeamCheck = false,
@@ -55,7 +55,7 @@ local GetMouseLocation = UserInputService.GetMouseLocation
 local resume = coroutine.resume 
 local create = coroutine.create
 
-local ValidTargetParts = {"Head", "HumanoidRootPart"}
+local ValidTargetParts = {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso", "Penis"}
 local PredictionAmount = 0.165
 
 local mouse_box = Drawing.new("Square")
@@ -69,7 +69,7 @@ mouse_box.Filled = true
 local fov_circle = Drawing.new("Circle")
 fov_circle.Thickness = 1
 fov_circle.NumSides = 100
-fov_circle.Radius = 180
+fov_circle.Radius = 30
 fov_circle.Filled = false
 fov_circle.Visible = false
 fov_circle.ZIndex = 999
@@ -241,8 +241,11 @@ end
 
 -- ui creating & handling
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xaxaxaxaxaxaxaxaxa/Libraries/main/UI's/Linoria/Source.lua"))()
-Library:SetWatermark("github.com/Averiias")
-    
+
+local Window = Library:CreateWindow("Universal Silent Aim, by Your Mom")
+local GeneralTab = Window:AddTab("General")
+local MainBOX = GeneralTab:AddLeftTabbox("Main") do
+    local Main = MainBOX:AddTab("Main")
     
     Main:AddToggle("aim_Enabled", {Text = "Enabled"}):AddKeyPicker("aim_Enabled_KeyPicker", {Default = "RightAlt", SyncToggleState = true, Mode = "Toggle", Text = "Enabled", NoUI = false});
     Options.aim_Enabled_KeyPicker:OnClick(function()
@@ -466,3 +469,4 @@ oldIndex = hookmetamethod(game, "__index", newcclosure(function(self, Index)
 
     return oldIndex(self, Index)
 end))
+
